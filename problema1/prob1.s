@@ -11,7 +11,7 @@ main:
     beq x0, x0, FIM     # chama a função FIM
 
 inverte:
-    addi sp, sp, -4    # aumenta o espaço na pilha para mais 3 palavras
+    addi sp, sp, -4     # aumenta o espaço na pilha para mais 1 palavra
     sw x1, 0(sp)        # armazena o endereço de retorno na pilha
 
     lw x5, 0(x12)       # armazena em x5 o elemento armazenado em x12, inicio do vetor
@@ -21,9 +21,9 @@ inverte:
 
     addi x28, x12, 4    # armazena em x28 o proximo endereço da esquerda
     addi x29, x13, -4   # armazena em x29 o proximo endereço da direita
-    blt x28, x29, L1   # se x12+4 < x13-4 chama a função L1
+    blt x28, x29, L1    # se x12+4 < x13-4 chama a função L1
 
-    addi sp, sp, 4     # desaloca as 3 palavras da pilha
+    addi sp, sp, 4      # desaloca 1 palavra da pilha
     jalr x0, 0(x1)      # retorna para o endereço de x1
 
 L1:
@@ -31,7 +31,7 @@ L1:
     addi x13, x13, -4   # x13 = o elemento anterior a x13
     jal x1, inverte     # chama a função inverte e x1 = PC + 4
     lw x1, 0(sp)        # x1 = endereço do topo da pilha
-    addi sp, sp, 4      # desaloca uma palavra do topo da pilha
+    addi sp, sp, 4      # desaloca 1 palavra do topo da pilha
     jalr x0, 0(x1)      # retorna para o endereço de x1
 
 FIM: add x1, x0, x10
