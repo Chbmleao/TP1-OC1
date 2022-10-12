@@ -26,10 +26,10 @@ int verificaCpf(int cpf[]) {
         j--; 
     }
 
-    std::cout << resultado;
-
     resultado = resultado * 10;
     resultado = resultado % 11;
+
+    std::cout << resultado;
 
     if (resultado != cpf[10])
         return 0;
@@ -39,13 +39,15 @@ int verificaCpf(int cpf[]) {
 
 int verificaCnpj(int cnpj[]) {
     // primeiro digito
-    int numerosMagicos1[] = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    int numerosMagicos[] = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
     int multiplicacao = 0;
     int resultado = 0;
+    int countNumMagic = 1;
 
     for (int i = 0; i < 12; i++) {
-        multiplicacao = cnpj[i] * numerosMagicos1[i];
+        multiplicacao = cnpj[i] * numerosMagicos[countNumMagic];
         resultado = resultado + multiplicacao;
+        countNumMagic = countNumMagic + 1;
     }
     
     resultado = resultado % 11;
@@ -60,12 +62,11 @@ int verificaCnpj(int cnpj[]) {
     }
 
     // segundo digito
-    int numerosMagicos2[] = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
     multiplicacao = 0;
     resultado = 0;
 
     for (int i = 0; i < 13; i++) {
-        multiplicacao = cnpj[i] * numerosMagicos2[i];
+        multiplicacao = cnpj[i] * numerosMagicos[i];
         resultado = resultado + multiplicacao;
     }
 
