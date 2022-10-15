@@ -11,8 +11,12 @@ int verificaCpf(int cpf[]) {
         j--; 
     }
     
+    std::cout << resultado << " ";
+
     resultado = resultado * 10;
     resultado = resultado % 11;
+
+    std::cout << resultado << " ";
 
     if(resultado != cpf[9])
         return 0;
@@ -97,7 +101,7 @@ int verificaCadastro(int cadastro[], int isCnpj) {
 }
 
 int main() {
-    int cpf[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    int cpf[] = {1, 3, 6, 9, 3, 1, 3, 8, 6, 1, 3};
     int cnpj[] = {1, 1, 2, 2, 2, 3, 3, 3, 0, 0, 0, 1, 8, 0};
 
     if (verificaCadastro(cpf, 0))
